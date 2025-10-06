@@ -3,7 +3,7 @@ import { Plus, Copy, Check, XCircle, Users, Calendar, Link as LinkIcon } from 'l
 import { supabase } from '../../lib/supabase';
 import { useAuth } from '../../contexts/AuthContext';
 import { useToast } from '../../contexts/ToastContext';
-import { ManagerLayout } from '../../components/manager/ManagerLayout';
+import { AdminLayout } from '../../components/admin/AdminLayout';
 import { Button } from '../../components/shared/Button';
 import { Input } from '../../components/shared/Input';
 import type { TrialLink, TrialRedemption, Profile } from '../../types';
@@ -145,16 +145,16 @@ export function TrialLinks() {
 
   if (loading) {
     return (
-      <ManagerLayout>
+      <AdminLayout>
         <div className="flex items-center justify-center h-64">
           <div className="text-slate-500">Loading trial links...</div>
         </div>
-      </ManagerLayout>
+      </AdminLayout>
     );
   }
 
   return (
-    <ManagerLayout>
+    <AdminLayout>
       <div className="mb-8">
         <div className="flex items-center justify-between">
           <div>
@@ -361,6 +361,6 @@ export function TrialLinks() {
           </div>
         </div>
       )}
-    </ManagerLayout>
+    </AdminLayout>
   );
 }

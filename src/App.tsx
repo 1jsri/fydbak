@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { ToastProvider } from './contexts/ToastContext';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
@@ -22,6 +22,7 @@ import { AdminDashboard } from './pages/admin/AdminDashboard';
 import { UserManagement } from './pages/admin/UserManagement';
 import { TrialLinks } from './pages/admin/TrialLinks';
 import { TrialRedemption } from './pages/TrialRedemption';
+import { NotFound } from './pages/NotFound';
 
 function App() {
   return (
@@ -141,7 +142,7 @@ function App() {
             }
           />
 
-          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </AuthProvider>
       </ToastProvider>

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Users, Link as LinkIcon, Activity, Crown, TrendingUp } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
-import { ManagerLayout } from '../../components/manager/ManagerLayout';
+import { AdminLayout } from '../../components/admin/AdminLayout';
 
 interface Stats {
   totalUsers: number;
@@ -66,16 +66,16 @@ export function AdminDashboard() {
 
   if (loading) {
     return (
-      <ManagerLayout>
+      <AdminLayout>
         <div className="flex items-center justify-center h-64">
           <div className="text-slate-500">Loading admin dashboard...</div>
         </div>
-      </ManagerLayout>
+      </AdminLayout>
     );
   }
 
   return (
-    <ManagerLayout>
+    <AdminLayout>
       <div className="mb-8">
         <div className="flex items-center space-x-3 mb-2">
           <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
@@ -177,6 +177,6 @@ export function AdminDashboard() {
           </p>
         </Link>
       </div>
-    </ManagerLayout>
+    </AdminLayout>
   );
 }

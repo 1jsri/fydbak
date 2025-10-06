@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Search, Crown, TrendingUp, Zap, Calendar, Mail, User, Ban, CheckCircle, Download, Trash2, FileText, Clock } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { useToast } from '../../contexts/ToastContext';
-import { ManagerLayout } from '../../components/manager/ManagerLayout';
+import { AdminLayout } from '../../components/admin/AdminLayout';
 import { Button } from '../../components/shared/Button';
 import { Input } from '../../components/shared/Input';
 import { TextArea } from '../../components/shared/TextArea';
@@ -359,16 +359,16 @@ export function UserManagement() {
 
   if (loading) {
     return (
-      <ManagerLayout>
+      <AdminLayout>
         <div className="flex items-center justify-center h-64">
           <div className="text-slate-500">Loading users...</div>
         </div>
-      </ManagerLayout>
+      </AdminLayout>
     );
   }
 
   return (
-    <ManagerLayout>
+    <AdminLayout>
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-slate-900">User Management</h1>
         <p className="text-slate-600 mt-2">View and manage all user accounts</p>
@@ -849,6 +849,6 @@ export function UserManagement() {
           </div>
         </ConfirmModal>
       )}
-    </ManagerLayout>
+    </AdminLayout>
   );
 }
