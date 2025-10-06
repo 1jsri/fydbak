@@ -68,7 +68,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       console.log('[AuthContext] Profile loaded:', {
         email: data?.email,
         role: data?.role,
-        is_site_owner: data?.is_site_owner,
         account_status: data?.account_status
       });
 
@@ -116,8 +115,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           if (!reloadError && updatedProfile) {
             console.log('[AuthContext] Profile upgraded to admin successfully:', {
               email: updatedProfile.email,
-              role: updatedProfile.role,
-              is_site_owner: updatedProfile.is_site_owner
+              role: updatedProfile.role
             });
             setProfile(updatedProfile);
             return;

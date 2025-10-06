@@ -2,12 +2,12 @@ import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { LogOut, Settings, User, Shield, ChevronDown } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
-import { useIsOwner } from '../../hooks/useIsOwner';
+import { useIsAdmin } from '../../hooks/useIsAdmin';
 
 export function UserAccountMenu() {
   const { profile, signOut } = useAuth();
   const navigate = useNavigate();
-  const isOwner = useIsOwner();
+  const isAdmin = useIsAdmin();
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -41,7 +41,7 @@ export function UserAccountMenu() {
         <div className="hidden sm:block text-left">
           <div className="text-sm font-medium text-slate-900 flex items-center gap-1">
             {profile?.full_name || 'User'}
-            {isOwner && (
+            {isAdmin && (
               <Shield className="w-3.5 h-3.5 text-amber-600" title="Admin" />
             )}
           </div>
@@ -60,7 +60,7 @@ export function UserAccountMenu() {
               <div>
                 <div className="text-sm font-medium text-slate-900 flex items-center gap-1">
                   {profile?.full_name || 'User'}
-                  {isOwner && (
+                  {isAdmin && (
                     <Shield className="w-3.5 h-3.5 text-amber-600" title="Admin" />
                   )}
                 </div>
@@ -70,7 +70,7 @@ export function UserAccountMenu() {
           </div>
 
           <div className="py-2">
-            {isOwner && (
+            {isAdmin && (
               <Link
                 to="/owner"
                 onClick={() => setIsOpen(false)}

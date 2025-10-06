@@ -13,7 +13,7 @@ interface Stats {
   totalResponses: number;
 }
 
-export function OwnerDashboard() {
+export function AdminDashboard() {
   const [stats, setStats] = useState<Stats>({
     totalUsers: 0,
     freeUsers: 0,
@@ -68,7 +68,7 @@ export function OwnerDashboard() {
     return (
       <ManagerLayout>
         <div className="flex items-center justify-center h-64">
-          <div className="text-slate-500">Loading owner dashboard...</div>
+          <div className="text-slate-500">Loading admin dashboard...</div>
         </div>
       </ManagerLayout>
     );
@@ -81,7 +81,7 @@ export function OwnerDashboard() {
           <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
             <Crown className="w-6 h-6 text-amber-600" />
           </div>
-          <h1 className="text-3xl font-bold text-slate-900">Site Owner Dashboard</h1>
+          <h1 className="text-3xl font-bold text-slate-900">Admin Dashboard</h1>
         </div>
         <p className="text-slate-600">
           Manage users, create trial links, and monitor platform health
@@ -142,7 +142,7 @@ export function OwnerDashboard() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Link
-          to="/owner/users"
+          to="/admin/users"
           className="bg-white rounded-xl border-2 border-slate-200 p-6 hover:border-blue-500 hover:shadow-lg transition-all group"
         >
           <div className="flex items-center space-x-4 mb-4">
@@ -160,7 +160,7 @@ export function OwnerDashboard() {
         </Link>
 
         <Link
-          to="/owner/trial-links"
+          to="/admin/trial-links"
           className="bg-white rounded-xl border-2 border-slate-200 p-6 hover:border-green-500 hover:shadow-lg transition-all group"
         >
           <div className="flex items-center space-x-4 mb-4">

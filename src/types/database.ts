@@ -366,10 +366,10 @@ export interface Database {
           ip_address?: string | null
         }
       }
-      owner_audit_log: {
+      admin_audit_log: {
         Row: {
           id: string
-          owner_id: string
+          admin_id: string
           action_type: string
           target_user_id: string | null
           details: Json
@@ -377,7 +377,7 @@ export interface Database {
         }
         Insert: {
           id?: string
-          owner_id: string
+          admin_id: string
           action_type: string
           target_user_id?: string | null
           details?: Json
@@ -385,7 +385,7 @@ export interface Database {
         }
         Update: {
           id?: string
-          owner_id?: string
+          admin_id?: string
           action_type?: string
           target_user_id?: string | null
           details?: Json

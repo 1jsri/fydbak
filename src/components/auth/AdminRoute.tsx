@@ -1,27 +1,17 @@
 import { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import { useIsOwner } from '../../hooks/useIsOwner';
+import { useIsAdmin } from '../../hooks/useIsAdmin';
 
-interface OwnerRouteProps {
+interface AdminRouteProps {
   children: ReactNode;
 }
 
-export function OwnerRoute({ children }: OwnerRouteProps) {
-  const { user, loading, profile } = useAuth();
-  const isOwner = useIsOwner();
-
-  console.log('[OwnerRoute] State:', {
-    loading,
-    hasUser: !!user,
-    hasProfile: !!profile,
-    isOwner,
-    profileRole: profile?.role,
-    profileIsOwner: profile?.is_site_owner
-  });
+export function AdminRoute({ children }: AdminRouteProps) {
+  const { user, loading } = useAuth();
+  const isAdmin = useIsAdmin();
 
   if (loading) {
-    console.log('[OwnerRoute] Still loading...');
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
         <div className="text-center">
@@ -33,15 +23,12 @@ export function OwnerRoute({ children }: OwnerRouteProps) {
   }
 
   if (!user) {
-    console.log('[OwnerRoute] No user, redirecting to login');
     return <Navigate to="/login" replace />;
   }
 
-  if (!isOwner) {
-    console.log('[OwnerRoute] Not owner, redirecting to dashboard');
+  if (!isAdmin) {
     return <Navigate to="/dashboard" replace />;
   }
 
-  console.log('[OwnerRoute] Access granted!');
   return <>{children}</>;
 }

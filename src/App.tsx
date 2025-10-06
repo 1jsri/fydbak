@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { ToastProvider } from './contexts/ToastContext';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
-import { OwnerRoute } from './components/auth/OwnerRoute';
+import { AdminRoute } from './components/auth/AdminRoute';
 import { Home } from './pages/Home';
 import { Pricing } from './pages/Pricing';
 import { Terms } from './pages/Terms';
@@ -18,9 +18,9 @@ import { ResponseDetail } from './pages/manager/ResponseDetail';
 import { Billing } from './pages/manager/Billing';
 import { Settings } from './pages/manager/Settings';
 import { SurveyChat } from './pages/rep/SurveyChat';
-import { OwnerDashboard } from './pages/owner/OwnerDashboard';
-import { UserManagement } from './pages/owner/UserManagement';
-import { TrialLinks } from './pages/owner/TrialLinks';
+import { AdminDashboard } from './pages/admin/AdminDashboard';
+import { UserManagement } from './pages/admin/UserManagement';
+import { TrialLinks } from './pages/admin/TrialLinks';
 import { TrialRedemption } from './pages/TrialRedemption';
 
 function App() {
@@ -106,29 +106,38 @@ function App() {
           <Route path="/trial/:code" element={<TrialRedemption />} />
 
           <Route
-            path="/owner"
+            path="/admin"
             element={
-              <OwnerRoute>
-                <OwnerDashboard />
-              </OwnerRoute>
+              <AdminRoute>
+                <AdminDashboard />
+              </AdminRoute>
             }
           />
 
           <Route
-            path="/owner/users"
+            path="/admin/users"
             element={
-              <OwnerRoute>
+              <AdminRoute>
                 <UserManagement />
-              </OwnerRoute>
+              </AdminRoute>
             }
           />
 
           <Route
-            path="/owner/trial-links"
+            path="/admin/trial-links"
             element={
-              <OwnerRoute>
+              <AdminRoute>
                 <TrialLinks />
-              </OwnerRoute>
+              </AdminRoute>
+            }
+          />
+
+          <Route
+            path="/admin/analytics"
+            element={
+              <AdminRoute>
+                <AdminDashboard />
+              </AdminRoute>
             }
           />
 

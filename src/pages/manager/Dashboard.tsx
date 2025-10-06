@@ -7,7 +7,7 @@ import { Button } from '../../components/shared/Button';
 import { DashboardSkeleton } from '../../components/shared/LoadingSkeleton';
 import { ConfirmModal } from '../../components/shared/ConfirmModal';
 import { useAuth } from '../../contexts/AuthContext';
-import { useIsOwner } from '../../hooks/useIsOwner';
+import { useIsAdmin } from '../../hooks/useIsAdmin';
 import { useToast } from '../../contexts/ToastContext';
 import { supabase } from '../../lib/supabase';
 import type { Survey } from '../../types';
@@ -22,7 +22,7 @@ interface SurveyWithStats extends Survey {
 
 export function Dashboard() {
   const { user, profile } = useAuth();
-  const isOwner = useIsOwner();
+  const isAdmin = useIsAdmin();
   const toast = useToast();
   const [surveys, setSurveys] = useState<SurveyWithStats[]>([]);
   const [loading, setLoading] = useState(true);
@@ -178,7 +178,7 @@ export function Dashboard() {
     <ManagerLayout>
       <UsageBanner />
 
-      {isOwner && (
+      {isAdmin && (
         <div className="mb-6 bg-gradient-to-r from-amber-50 to-yellow-50 border-2 border-amber-200 rounded-xl p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
@@ -198,7 +198,7 @@ export function Dashboard() {
             </Link>
           </div>
           <div className="mt-3 text-xs text-slate-500 font-mono bg-white rounded p-2">
-            Debug: role={profile?.role}, is_site_owner={profile?.is_site_owner?.toString()}, isOwner={isOwner.toString()}
+            Debug: role={profile?.role}, is_site_owner={profile?.is_site_owner?.toString()}, isAdmin={isAdmin.toString()}
           </div>
         </div>
       )}

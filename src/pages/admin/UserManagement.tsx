@@ -125,7 +125,7 @@ export function UserManagement() {
 
       if (error) throw error;
 
-      await supabase.rpc('log_owner_action', {
+      await supabase.rpc('log_admin_action', {
         action_type_param: 'change_plan',
         target_user_id_param: userId,
         details_param: { new_plan: newPlan },
@@ -149,7 +149,7 @@ export function UserManagement() {
 
       if (error) throw error;
 
-      await supabase.rpc('log_owner_action', {
+      await supabase.rpc('log_admin_action', {
         action_type_param: 'reset_usage',
         target_user_id_param: userId,
         details_param: {},
@@ -179,7 +179,7 @@ export function UserManagement() {
 
       if (error) throw error;
 
-      await supabase.rpc('log_owner_action', {
+      await supabase.rpc('log_admin_action', {
         action_type_param: 'suspend_user',
         target_user_id_param: userId,
         details_param: { reason },
@@ -210,7 +210,7 @@ export function UserManagement() {
 
       if (error) throw error;
 
-      await supabase.rpc('log_owner_action', {
+      await supabase.rpc('log_admin_action', {
         action_type_param: 'unsuspend_user',
         target_user_id_param: userId,
         details_param: {},
@@ -271,7 +271,7 @@ export function UserManagement() {
 
       if (error) throw error;
 
-      await supabase.rpc('log_owner_action', {
+      await supabase.rpc('log_admin_action', {
         action_type_param: 'schedule_deletion',
         target_user_id_param: userId,
         details_param: { scheduled_for: '30 days' },

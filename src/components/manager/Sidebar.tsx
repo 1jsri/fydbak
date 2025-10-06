@@ -20,7 +20,7 @@ import {
 import { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useToast } from '../../contexts/ToastContext';
-import { useIsOwner } from '../../hooks/useIsOwner';
+import { useIsAdmin } from '../../hooks/useIsAdmin';
 import { Button } from '../shared/Button';
 
 interface SidebarProps {
@@ -32,7 +32,7 @@ export function Sidebar({ mobileOpen = false, onMobileClose }: SidebarProps) {
   const location = useLocation();
   const { profile } = useAuth();
   const toast = useToast();
-  const isOwner = useIsOwner();
+  const isAdmin = useIsAdmin();
   const [surveysExpanded, setSurveysExpanded] = useState(true);
   const [billingExpanded, setBillingExpanded] = useState(false);
 
@@ -76,13 +76,13 @@ export function Sidebar({ mobileOpen = false, onMobileClose }: SidebarProps) {
 
       <div className="flex-1 overflow-y-auto py-4">
         <nav className="px-3 space-y-1">
-          {isOwner && (
+          {isAdmin && (
             <div className="mb-4">
               <Link
-                to="/owner"
+                to="/admin"
                 className={`
                   flex items-center px-3 py-3 text-sm rounded-lg transition-colors font-medium
-                  ${location.pathname.startsWith('/owner')
+                  ${location.pathname.startsWith('/admin')
                     ? 'bg-amber-50 text-amber-700 border border-amber-200'
                     : 'text-slate-700 hover:bg-amber-50 hover:text-amber-700 border border-transparent'
                   }

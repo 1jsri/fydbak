@@ -86,7 +86,7 @@ export function TrialLinks() {
 
       if (error) throw error;
 
-      await supabase.rpc('log_owner_action', {
+      await supabase.rpc('log_admin_action', {
         action_type_param: 'create_trial_link',
         target_user_id_param: null,
         details_param: { code, label: formData.label },
