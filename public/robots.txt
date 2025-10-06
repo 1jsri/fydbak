@@ -1,0 +1,22 @@
+# robots.txt for FydBak
+# Last updated: 2025-10-01
+
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /surveys/
+Disallow: /billing
+Disallow: /owner
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+
+# Allow public pages for indexing
+Allow: /
+Allow: /pricing
+Allow: /terms
+Allow: /privacy
+Allow: /trial/*
+
+# Sitemap location
+Sitemap: https://fydbak.com/sitemap.xml
