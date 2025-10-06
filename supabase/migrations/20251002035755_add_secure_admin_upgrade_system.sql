@@ -87,7 +87,7 @@ CREATE POLICY "Only admins can update admin settings"
 
 -- Step 2: Insert initial admin email (this is secure as it's in the database)
 INSERT INTO admin_settings (setting_key, setting_value)
-VALUES ('primary_admin_email', 'jawwadsri@gmail.com')
+VALUES ('primary_admin_email', 'admin@motiiv.ai')
 ON CONFLICT (setting_key) DO UPDATE
 SET setting_value = EXCLUDED.setting_value,
     updated_at = now();
